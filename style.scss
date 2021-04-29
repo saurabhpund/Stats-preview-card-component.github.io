@@ -1,0 +1,220 @@
+//=============VARIABLES
+:root {
+    --ff-primary: "Inter", sans-serif;
+    --ff-secondary: "Lexend Deca", sans-serif;
+  
+    --fw-reg: 400;
+    --fw-bold: 700;
+  
+    --fs-h1: 1.8rem;
+    --stat: 1.5rem;
+    --fs-body: 0.95rem;
+  
+    //===colors
+    // primary
+    --very-dark-blue: hsl(233, 47%, 7%); //(main background)
+    --dark-desaturated-blue: hsl(244, 38%, 16%); //(card background)
+    --soft-violet: hsl(277, 64%, 61%); // (accent)
+  
+    // neutral
+    --primary-transparent-white: hsla(0, 0%, 100%, 0.75); //main paragraph
+    --secondary-transparent-white: hsla(0, 0%, 100%, 0.6); //(stat headings)
+  }
+  @media screen and (min-width: 768px) {
+    :root {
+      --stat: 1.2rem;
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    :root {
+      --fs-h1: 1.9rem;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    :root {
+      --fs-h1: 2.25rem;
+      --stat: 1.5rem;
+    }
+  }
+  
+  //=============RESET
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+  //=============BASE STYLES (styles that doesn't change whatever the size of the screen)
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--very-dark-blue);
+  }
+  
+  main {
+    padding-top: 44.8px;
+    margin: 0 auto;
+    min-height: calc(100vh - 44.8px);
+    width: 90vw;
+    display: grid;
+    place-items: center;
+  }
+  
+  .card {
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--dark-desaturated-blue);
+  }
+  
+  .attribution {
+    padding: 1rem;
+  }
+  
+  //=============FONTS
+  body {
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    color: white;
+  }
+  
+  .card {
+    text-align: center;
+  
+    &__title {
+      font-size: var(--fs-h1);
+      strong {
+        color: var(--soft-violet);
+      }
+    }
+  
+    &__body {
+      line-height: 1.5rem;
+      color: var(--primary-transparent-white);
+    }
+  
+    &__stats-list {
+      font-family: var(--ff-secondary);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: var(--secondary-transparent-white);
+      letter-spacing: 0.05rem;
+      strong {
+        padding-bottom: 0.5rem;
+        color: white;
+        font-family: var(--ff-primary);
+        font-size: var(--stat);
+      }
+      .small-letter {
+        text-transform: lowercase;
+      }
+    }
+  }
+  
+  .attribution {
+    font-size: 11px;
+    text-align: center;
+  
+    &__link {
+      color: var(--soft-violet);
+    }
+  }
+  
+  //=============mobile styles
+  
+  .card {
+    max-width: 378px;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 0.85fr 1fr 1fr;
+  
+    &__bg-img {
+      position: relative;
+      background-image: url("images/image-header-mobile.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center top;
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: hsl(283, 100%, 40%);
+        width: 100%;
+        height: 100%;
+        opacity: 0.45;
+      }
+    }
+  
+    &__text {
+      padding: 1.5rem;
+    }
+  
+    &__title {
+      margin: 1.5rem 0;
+    }
+  
+    &__body {
+      padding: 0 10px;
+    }
+  
+    &__stats-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      padding: 1rem 0 3rem;
+      strong {
+        display: block;
+      }
+    }
+  }
+  
+  //=============tablets
+  
+  @media screen and (min-width: 768px) {
+    .card {
+      max-width: 768px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 70% 30%;
+  
+      &__bg-img {
+        grid-column: 2/3;
+        grid-row: 1/3;
+      }
+  
+      &__text {
+        grid-column: 1/2;
+        text-align: start;
+        padding: 3rem 2rem 1rem;
+      }
+  
+      &__title {
+        margin-top: 0;
+        margin-bottom: 2rem;
+      }
+  
+      &__body {
+        padding: 0;
+      }
+  
+      &__stats-list {
+        font-size: 0.7rem;
+        text-align: start;
+        grid-column: 1/2;
+        flex-direction: row;
+        padding: 2rem;
+        align-items: center;
+      }
+    }
+  }
